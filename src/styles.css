@@ -585,6 +585,193 @@ h1 {
 }
 
 
+
+body.gate-locked {
+  overflow: hidden;
+}
+
+.invitation-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #dff4f7;
+}
+
+.gate-panel {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50.08%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.34), transparent 26%),
+    linear-gradient(180deg, #e2f7fa 0%, #d9f0f4 48%, #d5edf1 100%);
+  transition:
+    transform 2.25s cubic-bezier(.77, 0, .18, 1),
+    box-shadow 2.25s cubic-bezier(.77, 0, .18, 1);
+  will-change: transform;
+}
+
+.gate-panel-left {
+  left: 0;
+  border-right: 1px solid rgba(54, 111, 126, 0.32);
+  box-shadow: inset -18px 0 42px rgba(48, 97, 110, 0.08);
+}
+
+.gate-panel-right {
+  right: 0;
+  border-left: 1px solid rgba(54, 111, 126, 0.32);
+  box-shadow: inset 18px 0 42px rgba(48, 97, 110, 0.08);
+}
+
+.invitation-gate::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 5px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(93,145,156,0.35), rgba(255,255,255,0.2));
+  pointer-events: none;
+}
+
+.gate-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: rgba(40, 101, 116, 0.24);
+  z-index: 2;
+  transition: opacity 1.2s ease;
+}
+
+.gate-button {
+  position: relative;
+  z-index: 3;
+  width: clamp(132px, 17vw, 180px);
+  height: clamp(132px, 17vw, 180px);
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.64);
+  background: rgba(225, 246, 249, 0.88);
+  color: #394150;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  line-height: 1.3;
+  box-shadow:
+    0 22px 48px rgba(33, 80, 92, 0.22),
+    inset 0 0 28px rgba(255,255,255,0.56);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  transition:
+    transform 1.1s cubic-bezier(.77, 0, .18, 1),
+    opacity 1.05s ease,
+    filter 1.05s ease,
+    box-shadow .3s ease,
+    background .3s ease;
+  animation: gatePulse 2.2s ease-in-out infinite;
+}
+
+.gate-button::before,
+.gate-button::after {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: inherit;
+  border: 1px solid rgba(91, 143, 155, 0.28);
+  animation: gateRing 2.2s ease-out infinite;
+}
+
+.gate-button::after {
+  inset: -30px;
+  animation-delay: .65s;
+  border-color: rgba(91, 143, 155, 0.16);
+}
+
+.gate-button:hover {
+  transform: scale(1.04);
+  background: rgba(233, 249, 251, 0.96);
+  box-shadow:
+    0 28px 62px rgba(33, 80, 92, 0.28),
+    inset 0 0 34px rgba(255,255,255,0.72);
+}
+
+.gate-button span {
+  display: block;
+  text-shadow: 0 3px 14px rgba(35, 48, 65, 0.22);
+}
+
+.gate-opening .gate-panel-left {
+  transform: translateX(-105%);
+  box-shadow: inset -60px 0 90px rgba(48, 97, 110, 0.16);
+}
+
+.gate-opening .gate-panel-right {
+  transform: translateX(105%);
+  box-shadow: inset 60px 0 90px rgba(48, 97, 110, 0.16);
+}
+
+.gate-opening .gate-line {
+  opacity: 0;
+}
+
+.gate-opening .gate-button {
+  opacity: 0;
+  filter: blur(7px);
+  transform: scale(0.82);
+  pointer-events: none;
+  animation: none;
+}
+
+.gate-opening .gate-button::before,
+.gate-opening .gate-button::after {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes gatePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow:
+      0 22px 48px rgba(33, 80, 92, 0.22),
+      inset 0 0 28px rgba(255,255,255,0.56);
+  }
+  50% {
+    transform: scale(1.045);
+    box-shadow:
+      0 30px 66px rgba(33, 80, 92, 0.31),
+      inset 0 0 36px rgba(255,255,255,0.72);
+  }
+}
+
+@keyframes gateRing {
+  0% {
+    opacity: .65;
+    transform: scale(.88);
+  }
+  80% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
+
+@media (max-width: 640px) {
+  .gate-button {
+    width: 140px;
+    height: 140px;
+    letter-spacing: .22em;
+  }
+}
+
+
 .music-widget {
   position: fixed;
   right: 16px;
