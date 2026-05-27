@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FBFAF6"/>
+  <circle cx="170" cy="120" r="140" fill="#E2F2F6"/>
+  <circle cx="1030" cy="510" r="150" fill="#F8ECD6"/>
+  <rect x="88" y="88" width="1024" height="454" rx="40" fill="white" stroke="#E9E6DC"/>
+  <text x="600" y="215" text-anchor="middle" fill="#1F2937" font-family="Cormorant Garamond, serif" font-size="62" font-weight="600">Ceremonia de Graduación</text>
+  <text x="600" y="285" text-anchor="middle" fill="#475569" font-family="Inter, sans-serif" font-size="30">Ingeniero Constructor</text>
+  <line x1="485" y1="325" x2="715" y2="325" stroke="#D4AF76" stroke-width="2"/>
+  <text x="600" y="390" text-anchor="middle" fill="#334155" font-family="Cormorant Garamond, serif" font-size="42">Generación M.C. Victor Hugo Muñoz García</text>
+  <text x="600" y="452" text-anchor="middle" fill="#64748B" font-family="Inter, sans-serif" font-size="24">Facultad de Ingeniería · Universidad Autónoma de Guerrero</text>
+</svg>
