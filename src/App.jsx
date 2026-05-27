@@ -95,13 +95,15 @@ function PersonCard({ role, name, description }) {
 
 
 
-function InvitationGate({ opened, onOpen }) {
+function InvitationGate({ opened, opening, onOpen }) {
   if (opened) return null
 
   return (
-    <div className="invitation-gate" role="dialog" aria-label="Abrir invitación">
+    <div className={opening ? 'invitation-gate gate-opening' : 'invitation-gate'} role="dialog" aria-label="Abrir invitación">
+      <div className="gate-panel gate-panel-left"></div>
+      <div className="gate-panel gate-panel-right"></div>
       <div className="gate-line"></div>
-      <button type="button" className="gate-button" onClick={onOpen}>
+      <button type="button" className="gate-button" onClick={onOpen} disabled={opening}>
         <span>Abrir</span>
         <span>Invitación</span>
       </button>
@@ -192,6 +194,7 @@ function GraduateCard({ name, index }) {
 export default function App() {
   useReveal()
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
+  const [isGateOpening, setIsGateOpening] = useState(false)
   const countdown = useCountdown(EVENT_DATE)
 
   useEffect(() => {
@@ -200,8 +203,14 @@ export default function App() {
   }, [isInvitationOpen])
 
   const handleOpenInvitation = () => {
-    setIsInvitationOpen(true)
+    if (isGateOpening) return
+
+    setIsGateOpening(true)
     window.dispatchEvent(new Event('open-invitation-music'))
+
+    setTimeout(() => {
+      setIsInvitationOpen(true)
+    }, 2300)
   }
 
   const details = useMemo(
@@ -216,7 +225,7 @@ export default function App() {
 
   return (
     <div className="page-shell">
-      <InvitationGate opened={isInvitationOpen} onOpen={handleOpenInvitation} />
+      <InvitationGate opened={isInvitationOpen} opening={isGateOpening} onOpen={handleOpenInvitation} />
       <div className="bg-orb orb-1"></div>
       <div className="bg-orb orb-2"></div>
       <div className="bg-orb orb-3"></div>
