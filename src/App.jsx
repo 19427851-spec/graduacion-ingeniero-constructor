@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 const EVENT_DATE = new Date('2026-07-17T14:30:00-06:00')
 const MAPS_LINK = 'https://maps.app.goo.gl/BkvtgkiEe3y1R3937'
-const WHATSAPP_LINK = 'https://wa.me/527472736556?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20ceremonia%20de%20graduaci%C3%B3n%20de%20Ingeniero%20Constructor.'
+const WHATSAPP_LINK = 'https://wa.me/527472736556'
 const MUSIC_SRC = '/audio/levitate.mp3'
 
 const graduates = [
