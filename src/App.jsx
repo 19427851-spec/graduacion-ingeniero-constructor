@@ -376,9 +376,10 @@ export default function App() {
           </div>
 
           <div className="panel panel-accent reveal">
-            <p className="eyebrow">Confirmación de asistencia</p>
-            <h2>Confirma tu asistencia</h2>
-            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Confirmar por WhatsApp</a>
+            <p className="eyebrow">Preguntas y aclaraciones</p>
+            <h2>¿Tienes dudas sobre la ceremonia, ubicación o acceso?</h2>
+            <p>Si necesitas más información sobre el evento, puedes comunicarte directamente por WhatsApp.</p>
+            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-whatsapp">Contactar por WhatsApp</a>
           </div>
         </section>
       </main>
