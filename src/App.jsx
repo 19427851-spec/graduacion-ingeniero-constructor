@@ -94,6 +94,21 @@ function PersonCard({ role, name, description }) {
 }
 
 
+
+function InvitationGate({ opened, onOpen }) {
+  if (opened) return null
+
+  return (
+    <div className="invitation-gate" role="dialog" aria-label="Abrir invitación">
+      <div className="gate-line"></div>
+      <button type="button" className="gate-button" onClick={onOpen}>
+        <span>Abrir</span>
+        <span>Invitación</span>
+      </button>
+    </div>
+  )
+}
+
 function MusicButton() {
   const audioRef = useRef(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -105,24 +120,42 @@ function MusicButton() {
     }
   }, [])
 
-  const toggleMusic = async () => {
+  const playMusic = async () => {
     const audio = audioRef.current
     if (!audio) return
 
     try {
-      if (isPlaying) {
-        audio.pause()
-        setIsPlaying(false)
-      } else {
-        audio.volume = 0.16
-        await audio.play()
-        setIsPlaying(true)
-      }
+      audio.volume = 0.16
+      await audio.play()
+      setIsPlaying(true)
+      setAudioReady(true)
     } catch (error) {
       setAudioReady(false)
       setIsPlaying(false)
     }
   }
+
+  const toggleMusic = async () => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    if (isPlaying) {
+      audio.pause()
+      setIsPlaying(false)
+      return
+    }
+
+    await playMusic()
+  }
+
+  useEffect(() => {
+    const handleOpenInvitation = () => {
+      playMusic()
+    }
+
+    window.addEventListener('open-invitation-music', handleOpenInvitation)
+    return () => window.removeEventListener('open-invitation-music', handleOpenInvitation)
+  }, [])
 
   return (
     <div className="music-widget" aria-label="Control de música de fondo">
@@ -158,7 +191,18 @@ function GraduateCard({ name, index }) {
 
 export default function App() {
   useReveal()
+  const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const countdown = useCountdown(EVENT_DATE)
+
+  useEffect(() => {
+    document.body.classList.toggle('gate-locked', !isInvitationOpen)
+    return () => document.body.classList.remove('gate-locked')
+  }, [isInvitationOpen])
+
+  const handleOpenInvitation = () => {
+    setIsInvitationOpen(true)
+    window.dispatchEvent(new Event('open-invitation-music'))
+  }
 
   const details = useMemo(
     () => [
@@ -172,6 +216,7 @@ export default function App() {
 
   return (
     <div className="page-shell">
+      <InvitationGate opened={isInvitationOpen} onOpen={handleOpenInvitation} />
       <div className="bg-orb orb-1"></div>
       <div className="bg-orb orb-2"></div>
       <div className="bg-orb orb-3"></div>
