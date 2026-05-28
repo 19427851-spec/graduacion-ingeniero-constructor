@@ -388,7 +388,7 @@ export default function App() {
             <PersonCard
               role="Invitado de Honor"
               name="M.C. Bonifacio Rayo Mendoza"
-              description="Presidente del Colegio de Ingenieros Civiles “Primer Congreso de Anáhuac” del Estado de Guerrero, A.C."
+              description="Presidente del Honorable Colegio de Ingenieros Civiles “Primer Congreso de Anáhuac” del Estado de Guerrero, A.C."
             />
           </div>
         </section>
