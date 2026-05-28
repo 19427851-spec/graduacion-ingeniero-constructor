@@ -243,7 +243,6 @@ function GraduateModal({ graduate, onClose }) {
           <img src={iconSrc} alt={iconAlt} />
         </div>
 
-        <p className="eyebrow center">Compañero egresado</p>
         <h3>{graduate.name}</h3>
         <div className="separator"></div>
         <blockquote>
@@ -428,7 +427,7 @@ export default function App() {
             <PersonCard
               role="Padrino de generación"
               name="Lic. Jacinto González Varona"
-              description="Acompañará con distinción este acto académico como padrino de la generación."
+              description="Presidente del Comité Ejecutivo Estatal de Morena en Guerrero."
             />
             <PersonCard
               role="Último pase de lista"
