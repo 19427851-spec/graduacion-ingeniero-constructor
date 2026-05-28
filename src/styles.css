@@ -81,6 +81,11 @@ img { display: block; max-width: 100%; }
 .image-card,
 .group-photo-card,
 .graduate-card {
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
   background: var(--paper);
   backdrop-filter: blur(22px);
   -webkit-backdrop-filter: blur(22px);
@@ -239,112 +244,6 @@ h1 {
 }
 
 .hero-actions,
-
-body.modal-open {
-  overflow: hidden;
-}
-
-.graduate-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: grid;
-  place-items: center;
-  padding: 22px;
-  background: rgba(15, 23, 42, 0.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: modalFadeIn .32s ease both;
-}
-
-.graduate-modal {
-  position: relative;
-  width: min(560px, 100%);
-  border-radius: 34px;
-  padding: 34px 26px 30px;
-  text-align: center;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(226,243,248,.82), transparent 38%),
-    linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,248,.9));
-  border: 1px solid rgba(255,255,255,0.9);
-  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.22);
-  animation: modalPopIn .42s cubic-bezier(.22,1,.36,1) both;
-}
-
-.graduate-modal-close {
-  position: absolute;
-  right: 18px;
-  top: 16px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255,255,255,.78);
-  color: #64748b;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.16);
-}
-
-.graduate-modal-close:hover {
-  color: #1f2937;
-  background: rgba(255,255,255,.96);
-}
-
-.graduate-modal-icon {
-  width: 92px;
-  height: 92px;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255,255,255,.72);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 18px 36px rgba(148, 163, 184, 0.18);
-  overflow: hidden;
-}
-
-.graduate-modal-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.graduate-modal h3 {
-  max-width: 440px;
-  margin: 8px auto 18px;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.02;
-  color: #1f2937;
-}
-
-.graduate-modal blockquote {
-  max-width: 470px;
-  margin: 0 auto;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.45rem, 4vw, 2.1rem);
-  line-height: 1.35;
-  color: #344153;
-}
-
-.graduate-modal-author {
-  margin: 18px 0 0;
-  color: #66758a;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalPopIn {
-  from { opacity: 0; transform: translateY(22px) scale(.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
 .mobile-actions {
   display: flex;
   gap: 12px;
@@ -563,27 +462,23 @@ body.modal-open {
   gap: 12px;
 }
 .graduate-card {
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
   display: flex;
   align-items: center;
   gap: 14px;
-  width: 100%;
   min-height: 82px;
-  border: 0;
   border-radius: 22px;
   padding: 14px 16px;
-  text-align: left;
-  cursor: pointer;
-  font: inherit;
   transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
 }
 .graduate-card:hover {
   transform: translateY(-3px);
   background: rgba(255,255,255,0.9);
   box-shadow: 0 14px 32px rgba(37, 99, 235, 0.08);
-}
-.graduate-card:focus-visible {
-  outline: 3px solid rgba(216,183,128,0.45);
-  outline-offset: 3px;
 }
 
 .graduate-avatar {
@@ -638,112 +533,6 @@ body.modal-open {
   color: #1f2937;
 }
 .footer-meta { font-size: .98rem; }
-
-
-body.modal-open {
-  overflow: hidden;
-}
-
-.graduate-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: grid;
-  place-items: center;
-  padding: 22px;
-  background: rgba(15, 23, 42, 0.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: modalFadeIn .32s ease both;
-}
-
-.graduate-modal {
-  position: relative;
-  width: min(560px, 100%);
-  border-radius: 34px;
-  padding: 34px 26px 30px;
-  text-align: center;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(226,243,248,.82), transparent 38%),
-    linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,248,.9));
-  border: 1px solid rgba(255,255,255,0.9);
-  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.22);
-  animation: modalPopIn .42s cubic-bezier(.22,1,.36,1) both;
-}
-
-.graduate-modal-close {
-  position: absolute;
-  right: 18px;
-  top: 16px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255,255,255,.78);
-  color: #64748b;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.16);
-}
-
-.graduate-modal-close:hover {
-  color: #1f2937;
-  background: rgba(255,255,255,.96);
-}
-
-.graduate-modal-icon {
-  width: 92px;
-  height: 92px;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255,255,255,.72);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 18px 36px rgba(148, 163, 184, 0.18);
-  overflow: hidden;
-}
-
-.graduate-modal-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.graduate-modal h3 {
-  max-width: 440px;
-  margin: 8px auto 18px;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.02;
-  color: #1f2937;
-}
-
-.graduate-modal blockquote {
-  max-width: 470px;
-  margin: 0 auto;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.45rem, 4vw, 2.1rem);
-  line-height: 1.35;
-  color: #344153;
-}
-
-.graduate-modal-author {
-  margin: 18px 0 0;
-  color: #66758a;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalPopIn {
-  from { opacity: 0; transform: translateY(22px) scale(.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
 
 .mobile-actions {
   position: fixed;
@@ -810,113 +599,7 @@ body.modal-open {
   .group-photo-card { padding: 0; overflow: hidden; }
   .image-card { padding: 12px; }
   .footer { padding-bottom: 110px; }
-  
-body.modal-open {
-  overflow: hidden;
-}
-
-.graduate-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  display: grid;
-  place-items: center;
-  padding: 22px;
-  background: rgba(15, 23, 42, 0.18);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: modalFadeIn .32s ease both;
-}
-
-.graduate-modal {
-  position: relative;
-  width: min(560px, 100%);
-  border-radius: 34px;
-  padding: 34px 26px 30px;
-  text-align: center;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(226,243,248,.82), transparent 38%),
-    linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,248,.9));
-  border: 1px solid rgba(255,255,255,0.9);
-  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.22);
-  animation: modalPopIn .42s cubic-bezier(.22,1,.36,1) both;
-}
-
-.graduate-modal-close {
-  position: absolute;
-  right: 18px;
-  top: 16px;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 999px;
-  background: rgba(255,255,255,.78);
-  color: #64748b;
-  font-size: 1.6rem;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.16);
-}
-
-.graduate-modal-close:hover {
-  color: #1f2937;
-  background: rgba(255,255,255,.96);
-}
-
-.graduate-modal-icon {
-  width: 92px;
-  height: 92px;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(255,255,255,.72);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 18px 36px rgba(148, 163, 184, 0.18);
-  overflow: hidden;
-}
-
-.graduate-modal-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.graduate-modal h3 {
-  max-width: 440px;
-  margin: 8px auto 18px;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  line-height: 1.02;
-  color: #1f2937;
-}
-
-.graduate-modal blockquote {
-  max-width: 470px;
-  margin: 0 auto;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.45rem, 4vw, 2.1rem);
-  line-height: 1.35;
-  color: #344153;
-}
-
-.graduate-modal-author {
-  margin: 18px 0 0;
-  color: #66758a;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalPopIn {
-  from { opacity: 0; transform: translateY(22px) scale(.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.mobile-actions { display: flex; }
+  .mobile-actions { display: flex; }
 }
 
 
@@ -1322,3 +1005,123 @@ body.gate-locked {
     letter-spacing: .22em;
   }
 }
+
+.graduate-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: modalFadeIn .28s ease both;
+}
+
+.graduate-modal-card {
+  position: relative;
+  width: min(94vw, 560px);
+  border-radius: 34px;
+  padding: 34px 26px 30px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(226, 243, 248, 0.9), transparent 42%),
+    rgba(255,255,255,0.94);
+  border: 1px solid rgba(255,255,255,0.92);
+  box-shadow: 0 36px 120px rgba(15, 23, 42, 0.24);
+  animation: modalRise .34s cubic-bezier(.22,1,.36,1) both;
+}
+
+.graduate-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(241,245,249,0.92);
+  color: #334155;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.graduate-modal-close:hover {
+  transform: scale(1.05);
+  background: rgba(226,232,240,0.98);
+}
+
+.graduate-modal-icon {
+  width: 112px;
+  height: 112px;
+  margin: 0 auto 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.95), 0 18px 42px rgba(148, 163, 184, 0.22);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.graduate-modal-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.graduate-modal-card h3 {
+  margin: 10px auto 0;
+  max-width: 460px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1;
+  color: #1f2937;
+}
+
+.graduate-modal-card blockquote {
+  margin: 18px auto 0;
+  max-width: 460px;
+  color: #334155;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.55;
+}
+
+.graduate-modal-author {
+  margin: 16px 0 0;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalRise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .graduate-modal-card {
+    padding: 30px 20px 26px;
+    border-radius: 28px;
+  }
+
+  .graduate-modal-icon {
+    width: 94px;
+    height: 94px;
+  }
+}
+
