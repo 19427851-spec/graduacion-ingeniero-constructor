@@ -4,8 +4,8 @@ const EVENT_DATE = new Date('2026-07-17T14:30:00-06:00')
 const MAPS_LINK = 'https://maps.app.goo.gl/BkvtgkiEe3y1R3937'
 const WHATSAPP_LINK = 'https://wa.me/527472736556'
 const MUSIC_SRC = '/audio/levitate.mp3'
-const MALE_ICON = '/icons/ingeniero-hombre.png'
-const FEMALE_ICON = '/icons/ingeniero-mujer.png'
+const MALE_ICON = '/icons/hombre.png'
+const FEMALE_ICON = '/icons/mujer.png'
 
 const graduates = [
   { name: 'ALAN YAHIR SALDAÑA RENDON', gender: 'male' },
