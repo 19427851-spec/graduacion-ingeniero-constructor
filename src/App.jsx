@@ -31,7 +31,7 @@ const graduates = [
 const philosophicalQuotes = [
   { text: 'Quien tiene un porqué para vivir, puede soportar casi cualquier cómo.', author: 'Friedrich Nietzsche' },
   { text: 'La verdadera sabiduría está en reconocer la propia ignorancia.', author: 'Sócrates' },
-  { text: 'No es la muerte lo que el hombre debe temer, sino no empezar nunca a vivir.', author: 'Marco Aurelio' },
+  { text: 'La grandeza no se mide en victorias, sino en todas las veces que tuviste razones para rendirte... y aun asi no lo hiciste.', author: 'Inspirada en Nelson Mandela' },
   { text: 'El hombre está condenado a ser libre.', author: 'Jean-Paul Sartre' },
   { text: 'La vida solo puede ser comprendida mirando hacia atrás, pero ha de ser vivida mirando hacia adelante.', author: 'Søren Kierkegaard' },
   { text: 'Aquel que domina a otros es fuerte; aquel que se domina a sí mismo es poderoso.', author: 'Lao Tse' },
