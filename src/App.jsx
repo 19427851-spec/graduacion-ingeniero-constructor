@@ -26,6 +26,27 @@ const graduates = [
   'VICTOR HUGO CHAVELAS CASTRO',
 ]
 
+
+function getInitials(name) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+}
+
+function HelmetIcon() {
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+      <path d="M12 36c0-10.6 8.2-19.5 18.8-20.7V14c0-1.7 1.4-3 3-3h2.4c1.7 0 3 1.3 3 3v1.3C49.8 16.5 58 25.4 58 36v2.2c0 1.5-1.2 2.8-2.8 2.8H14.8c-1.5 0-2.8-1.3-2.8-2.8V36Z" fill="currentColor"/>
+      <path d="M22 27.5h20" stroke="#d1d5db" strokeWidth="3" strokeLinecap="round"/>
+      <path d="M17 41h36v3.8c0 2.3-1.9 4.2-4.2 4.2H21.2c-2.3 0-4.2-1.9-4.2-4.2V41Z" fill="currentColor"/>
+      <path d="M31.8 15.2v11.2" stroke="#d1d5db" strokeWidth="3" strokeLinecap="round"/>
+    </svg>
+  )
+}
+
 function useCountdown(targetDate) {
   const calc = () => {
     const diff = Math.max(targetDate.getTime() - Date.now(), 0)
@@ -184,8 +205,13 @@ function MusicButton() {
 
 function GraduateCard({ name, index }) {
   return (
-    <article className="graduate-card reveal">
-      <span>{String(index + 1).padStart(2, '0')}</span>
+    <article className="graduate-card reveal" style={{ transitionDelay: `${index * 90}ms` }}>
+      <div className="graduate-avatar" aria-hidden="true">
+        <span className="graduate-avatar-badge">{getInitials(name)}</span>
+        <div className="graduate-helmet">
+          <HelmetIcon />
+        </div>
+      </div>
       <p>{name}</p>
     </article>
   )
