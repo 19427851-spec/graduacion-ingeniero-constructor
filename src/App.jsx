@@ -4,48 +4,30 @@ const EVENT_DATE = new Date('2026-07-17T14:30:00-06:00')
 const MAPS_LINK = 'https://maps.app.goo.gl/BkvtgkiEe3y1R3937'
 const WHATSAPP_LINK = 'https://wa.me/527472736556'
 const MUSIC_SRC = '/audio/levitate.mp3'
+const MALE_ICON = '/icons/ingeniero-hombre.png'
+const FEMALE_ICON = '/icons/ingeniero-mujer.png'
 
 const graduates = [
-  'ALAN YAHIR SALDAÑA RENDON',
-  'BARDO ALEJANDRO TERRAZAS LINARES',
-  'DALIA MORALES GONZALEZ',
-  'ELIZABETH FRANCISCO POBLANO',
-  'EMANUEL VELAZQUEZ BASURTO',
-  'EVELIN ANET GARIBAY NAVARRETE',
-  'FRIDA VICTORIA BERNAL LÓPEZ',
-  'ITZEL MARCELINA CALDERON LEYVA',
-  'JENNIFER FIGUEROA LUNA',
-  'JOSE ALFREDO PEREZ CAMARGO',
-  'JOSE MANUEL BRAVO MEJIA',
-  'JOSELIN MAXIMILIANO JERONIMO',
-  'JUAN CARLOS ALBERTO CASTILLO RADILLA',
-  'JULIO CESAR ORTIZ HERNANDEZ',
-  'KENIA YOSELIN LEYVA HERNANDEZ',
-  'LUIS ANGEL CASTRO ORTIZ',
-  'MILTON ARMANDO RAMOS MORALES',
-  'VICTOR HUGO CHAVELAS CASTRO',
+  { name: 'ALAN YAHIR SALDAÑA RENDON', gender: 'male' },
+  { name: 'BARDO ALEJANDRO TERRAZAS LINARES', gender: 'male' },
+  { name: 'DALIA MORALES GONZALEZ', gender: 'female' },
+  { name: 'ELIZABETH FRANCISCO POBLANO', gender: 'female' },
+  { name: 'EMANUEL VELAZQUEZ BASURTO', gender: 'male' },
+  { name: 'EVELIN ANET GARIBAY NAVARRETE', gender: 'female' },
+  { name: 'FRIDA VICTORIA BERNAL LÓPEZ', gender: 'female' },
+  { name: 'ITZEL MARCELINA CALDERON LEYVA', gender: 'female' },
+  { name: 'JENNIFER FIGUEROA LUNA', gender: 'female' },
+  { name: 'JOSE ALFREDO PÉREZ CAMARGO', gender: 'male' },
+  { name: 'JOSE MANUEL BRAVO MEJIA', gender: 'male' },
+  { name: 'JOSELIN MAXIMILIANO JERONIMO', gender: 'female' },
+  { name: 'JUAN CARLOS ALBERTO CASTILLO RADILLA', gender: 'male' },
+  { name: 'JULIO CESAR ORTIZ HERNANDEZ', gender: 'male' },
+  { name: 'KENIA YOSELIN LEYVA HERNANDEZ', gender: 'female' },
+  { name: 'LUIS ANGEL CASTRO ORTIZ', gender: 'male' },
+  { name: 'MILTON ARMANDO RAMOS MORALES', gender: 'male' },
+  { name: 'VICTOR HUGO CHAVELAS CASTRO', gender: 'male' },
 ]
 
-
-function getInitials(name) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join('')
-}
-
-function HelmetIcon() {
-  return (
-    <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-      <path d="M12 36c0-10.6 8.2-19.5 18.8-20.7V14c0-1.7 1.4-3 3-3h2.4c1.7 0 3 1.3 3 3v1.3C49.8 16.5 58 25.4 58 36v2.2c0 1.5-1.2 2.8-2.8 2.8H14.8c-1.5 0-2.8-1.3-2.8-2.8V36Z" fill="currentColor"/>
-      <path d="M22 27.5h20" stroke="#d1d5db" strokeWidth="3" strokeLinecap="round"/>
-      <path d="M17 41h36v3.8c0 2.3-1.9 4.2-4.2 4.2H21.2c-2.3 0-4.2-1.9-4.2-4.2V41Z" fill="currentColor"/>
-      <path d="M31.8 15.2v11.2" stroke="#d1d5db" strokeWidth="3" strokeLinecap="round"/>
-    </svg>
-  )
-}
 
 function useCountdown(targetDate) {
   const calc = () => {
@@ -203,16 +185,17 @@ function MusicButton() {
   )
 }
 
-function GraduateCard({ name, index }) {
+
+function GraduateCard({ graduate, index }) {
+  const iconSrc = graduate.gender === 'female' ? FEMALE_ICON : MALE_ICON
+  const iconAlt = graduate.gender === 'female' ? 'Icono de ingeniera' : 'Icono de ingeniero'
+
   return (
     <article className="graduate-card reveal" style={{ transitionDelay: `${index * 90}ms` }}>
       <div className="graduate-avatar" aria-hidden="true">
-        <span className="graduate-avatar-badge">{getInitials(name)}</span>
-        <div className="graduate-helmet">
-          <HelmetIcon />
-        </div>
+        <img src={iconSrc} alt={iconAlt} className="graduate-avatar-image" />
       </div>
-      <p>{name}</p>
+      <p>{graduate.name}</p>
     </article>
   )
 }
@@ -365,7 +348,7 @@ export default function App() {
             <h2 className="section-title">Compañeros egresados</h2>
           </div>
           <div className="graduates-grid">
-            {graduates.map((name, index) => <GraduateCard key={name} name={name} index={index} />)}
+            {graduates.map((graduate, index) => <GraduateCard key={graduate.name} graduate={graduate} index={index} />)}
           </div>
         </section>
 
