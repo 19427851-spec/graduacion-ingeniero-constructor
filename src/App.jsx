@@ -8,26 +8,46 @@ const MALE_ICON = '/icons/hombre.png'
 const FEMALE_ICON = '/icons/mujer.png'
 
 const graduates = [
-  { name: 'ALAN YAHIR SALDAÑA RENDON', gender: 'male', quote: 'Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito.', author: 'Aristóteles' },
-  { name: 'BARDO ALEJANDRO TERRAZAS LINARES', gender: 'male', quote: 'Nadie se baña dos veces en el mismo río, porque ni el río ni la persona son los mismos.', author: 'Heráclito' },
-  { name: 'DALIA MORALES GONZALEZ', gender: 'female', quote: 'La verdadera sabiduría está en reconocer la propia ignorancia.', author: 'Sócrates' },
-  { name: 'ELIZABETH FRANCISCO POBLANO', gender: 'female', quote: 'La esperanza es el sueño del hombre despierto.', author: 'Aristóteles' },
-  { name: 'EMANUEL VELAZQUEZ BASURTO', gender: 'male', quote: 'La vida solo puede ser comprendida mirando hacia atrás, pero ha de ser vivida mirando hacia adelante.', author: 'Søren Kierkegaard' },
-  { name: 'EVELIN ANET GARIBAY NAVARRETE', gender: 'female', quote: 'El sufrimiento deja de ser sufrimiento en el momento en que encuentra un sentido.', author: 'Viktor Frankl' },
-  { name: 'FRIDA VICTORIA BERNAL LÓPEZ', gender: 'female', quote: 'El alma se tiñe del color de sus pensamientos.', author: 'Marco Aurelio' },
-  { name: 'ITZEL MARCELINA CALDERON LEYVA', gender: 'female', quote: 'No es la muerte lo que el hombre debe temer, sino no empezar nunca a vivir.', author: 'Marco Aurelio' },
-  { name: 'JENNIFER FIGUEROA LUNA', gender: 'female', quote: 'La libertad no consiste en hacer lo que se quiere, sino en tener el derecho de hacer lo que se debe.', author: 'Montesquieu' },
-  { name: 'JOSE ALFREDO PÉREZ CAMARGO', gender: 'male', quote: 'Quien tiene un porqué para vivir, puede soportar casi cualquier cómo.', author: 'Friedrich Nietzsche' },
-  { name: 'JOSE MANUEL BRAVO MEJIA', gender: 'male', quote: 'La felicidad de tu vida depende de la calidad de tus pensamientos.', author: 'Marco Aurelio' },
-  { name: 'JOSELIN MAXIMILIANO JERONIMO', gender: 'female', quote: 'La peor lucha es la que no se hace.', author: 'Karl Marx' },
-  { name: 'JUAN CARLOS ALBERTO CASTILLO RADILLA', gender: 'male', quote: 'Aquel que domina a otros es fuerte; aquel que se domina a sí mismo es poderoso.', author: 'Lao Tse' },
-  { name: 'JULIO CESAR ORTIZ HERNANDEZ', gender: 'male', quote: 'Solo quien ha atravesado la oscuridad puede valorar verdaderamente la luz.', author: 'Inspirada en el pensamiento existencialista' },
-  { name: 'KENIA YOSELIN LEYVA HERNANDEZ', gender: 'female', quote: 'El hombre está condenado a ser libre.', author: 'Jean-Paul Sartre' },
-  { name: 'LUIS ANGEL CASTRO ORTIZ', gender: 'male', quote: 'El que tiene paz en su conciencia lo tiene todo.', author: 'Don Bosco' },
-  { name: 'MILTON ARMANDO RAMOS MORALES', gender: 'male', quote: 'Todo hombre muere, pero no todo hombre vive realmente.', author: 'William Wallace' },
-  { name: 'VICTOR HUGO CHAVELAS CASTRO', gender: 'male', quote: 'Conocerse a sí mismo es el principio de toda sabiduría.', author: 'Aristóteles' },
+  { name: 'ALAN YAHIR SALDAÑA RENDON', gender: 'male' },
+  { name: 'BARDO ALEJANDRO TERRAZAS LINARES', gender: 'male' },
+  { name: 'DALIA MORALES GONZALEZ', gender: 'female' },
+  { name: 'ELIZABETH FRANCISCO POBLANO', gender: 'female' },
+  { name: 'EMANUEL VELAZQUEZ BASURTO', gender: 'male' },
+  { name: 'EVELIN ANET GARIBAY NAVARRETE', gender: 'female' },
+  { name: 'FRIDA VICTORIA BERNAL LÓPEZ', gender: 'female' },
+  { name: 'ITZEL MARCELINA CALDERON LEYVA', gender: 'female' },
+  { name: 'JENNIFER FIGUEROA LUNA', gender: 'female' },
+  { name: 'JOSE ALFREDO PÉREZ CAMARGO', gender: 'male' },
+  { name: 'JOSE MANUEL BRAVO MEJIA', gender: 'male' },
+  { name: 'JOSELIN MAXIMILIANO JERONIMO', gender: 'female' },
+  { name: 'JUAN CARLOS ALBERTO CASTILLO RADILLA', gender: 'male' },
+  { name: 'JULIO CESAR ORTIZ HERNANDEZ', gender: 'male' },
+  { name: 'KENIA YOSELIN LEYVA HERNANDEZ', gender: 'female' },
+  { name: 'LUIS ANGEL CASTRO ORTIZ', gender: 'male' },
+  { name: 'MILTON ARMANDO RAMOS MORALES', gender: 'male' },
+  { name: 'VICTOR HUGO CHAVELAS CASTRO', gender: 'male' },
 ]
 
+const philosophicalQuotes = [
+  { text: 'Quien tiene un porqué para vivir, puede soportar casi cualquier cómo.', author: 'Friedrich Nietzsche' },
+  { text: 'La verdadera sabiduría está en reconocer la propia ignorancia.', author: 'Sócrates' },
+  { text: 'No es la muerte lo que el hombre debe temer, sino no empezar nunca a vivir.', author: 'Marco Aurelio' },
+  { text: 'El hombre está condenado a ser libre.', author: 'Jean-Paul Sartre' },
+  { text: 'La vida solo puede ser comprendida mirando hacia atrás, pero ha de ser vivida mirando hacia adelante.', author: 'Søren Kierkegaard' },
+  { text: 'Aquel que domina a otros es fuerte; aquel que se domina a sí mismo es poderoso.', author: 'Lao Tse' },
+  { text: 'Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito.', author: 'Aristóteles' },
+  { text: 'La felicidad de tu vida depende de la calidad de tus pensamientos.', author: 'Marco Aurelio' },
+  { text: 'Todo hombre muere, pero no todo hombre vive realmente.', author: 'William Wallace' },
+  { text: 'El sufrimiento deja de ser sufrimiento en el momento en que encuentra un sentido.', author: 'Viktor Frankl' },
+  { text: 'La libertad no consiste en hacer lo que se quiere, sino en tener el derecho de hacer lo que se debe.', author: 'Montesquieu' },
+  { text: 'El que tiene paz en su conciencia lo tiene todo.', author: 'Don Bosco' },
+  { text: 'Nadie se baña dos veces en el mismo río, porque ni el río ni la persona son los mismos.', author: 'Heráclito' },
+  { text: 'La peor lucha es la que no se hace.', author: 'Karl Marx' },
+  { text: 'Conocerse a sí mismo es el principio de toda sabiduría.', author: 'Aristóteles' },
+  { text: 'El alma se tiñe del color de sus pensamientos.', author: 'Marco Aurelio' },
+  { text: 'La esperanza es el sueño del hombre despierto.', author: 'Aristóteles' },
+  { text: 'Solo quien ha atravesado la oscuridad puede valorar verdaderamente la luz.', author: 'Inspirada en el pensamiento existencialista' },
+]
 
 function useCountdown(targetDate) {
   const calc = () => {
@@ -186,7 +206,6 @@ function MusicButton() {
 }
 
 
-
 function GraduateCard({ graduate, index, onSelect }) {
   const iconSrc = graduate.gender === 'female' ? FEMALE_ICON : MALE_ICON
   const iconAlt = graduate.gender === 'female' ? 'Icono de ingeniera' : 'Icono de ingeniero'
@@ -196,8 +215,7 @@ function GraduateCard({ graduate, index, onSelect }) {
       type="button"
       className="graduate-card reveal"
       style={{ transitionDelay: `${index * 90}ms` }}
-      onClick={() => onSelect(graduate)}
-      aria-label={`Ver frase de ${graduate.name}`}
+      onClick={() => onSelect({ ...graduate, index })}
     >
       <div className="graduate-avatar" aria-hidden="true">
         <img src={iconSrc} alt={iconAlt} className="graduate-avatar-image" />
@@ -208,42 +226,30 @@ function GraduateCard({ graduate, index, onSelect }) {
 }
 
 function GraduateModal({ graduate, onClose }) {
-  useEffect(() => {
-    if (!graduate) return
-
-    document.body.classList.add('modal-open')
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') onClose()
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => {
-      document.body.classList.remove('modal-open')
-      window.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [graduate, onClose])
-
   if (!graduate) return null
 
   const iconSrc = graduate.gender === 'female' ? FEMALE_ICON : MALE_ICON
   const iconAlt = graduate.gender === 'female' ? 'Icono de ingeniera' : 'Icono de ingeniero'
+  const quote = philosophicalQuotes[graduate.index % philosophicalQuotes.length]
 
   return (
-    <div className="graduate-modal-backdrop" onClick={onClose} role="presentation">
-      <div className="graduate-modal" role="dialog" aria-modal="true" aria-label={`Frase de ${graduate.name}`} onClick={(event) => event.stopPropagation()}>
+    <div className="graduate-modal-overlay" role="dialog" aria-modal="true" aria-label={`Frase de ${graduate.name}`} onClick={onClose}>
+      <div className="graduate-modal-card" onClick={(event) => event.stopPropagation()}>
         <button type="button" className="graduate-modal-close" onClick={onClose} aria-label="Cerrar ventana">
           ×
         </button>
+
         <div className="graduate-modal-icon">
           <img src={iconSrc} alt={iconAlt} />
         </div>
+
         <p className="eyebrow center">Compañero egresado</p>
         <h3>{graduate.name}</h3>
+        <div className="separator"></div>
         <blockquote>
-          “{graduate.quote}”
+          “{quote.text}”
         </blockquote>
-        <p className="graduate-modal-author">— {graduate.author}</p>
+        <p className="graduate-modal-author">— {quote.author}</p>
       </div>
     </div>
   )
@@ -271,6 +277,17 @@ export default function App() {
       setIsInvitationOpen(true)
     }, 2300)
   }
+
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        setSelectedGraduate(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [])
 
   const details = useMemo(
     () => [
@@ -398,9 +415,7 @@ export default function App() {
             <h2 className="section-title">Compañeros egresados</h2>
           </div>
           <div className="graduates-grid">
-            {graduates.map((graduate, index) => (
-              <GraduateCard key={graduate.name} graduate={graduate} index={index} onSelect={setSelectedGraduate} />
-            ))}
+            {graduates.map((graduate, index) => <GraduateCard key={graduate.name} graduate={graduate} index={index} onSelect={setSelectedGraduate} />)}
           </div>
         </section>
 
