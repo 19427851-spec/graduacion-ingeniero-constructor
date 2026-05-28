@@ -361,7 +361,7 @@ export default function App() {
             <PersonCard
               role="Padrino de generación"
               name="Lic. Jacinto González Varona"
-              description="Acompañará con distinción este acto académico como padrino de la generación."
+              description="Presidente del Comité Ejecutivo Estatal de Morena en Guerrero."
             />
             <PersonCard
               role="Último pase de lista"
