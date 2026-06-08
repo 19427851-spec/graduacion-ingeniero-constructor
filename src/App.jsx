@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 const EVENT_DATE = new Date('2026-07-17T14:30:00-06:00')
-const MAPS_LINK = 'https://maps.app.goo.gl/BkvtgkiEe3y1R3937'
+const MAPS_LINK = 'https://maps.app.goo.gl/P5cGigVectswn2Jr8'
 const WHATSAPP_LINK = 'https://wa.me/527472736556'
 const MUSIC_SRC = '/audio/levitate.mp3'
 const MALE_ICON = '/icons/hombre.png'
@@ -47,7 +47,7 @@ const philosophicalQuotes = [
   { text: 'El alma se tiñe del color de sus pensamientos.', author: 'Marco Aurelio' },
   { text: 'El mayor enemigo del conocimiento no es la ignorancia, sino la ilusión del conocimiento.', author: 'Stephen Hawking' },
   { text: 'Solo quien ha atravesado la oscuridad puede valorar verdaderamente la luz.', author: 'Inspirada en el pensamiento existencialista' },
-]
+  ]
 
 function useCountdown(targetDate) {
   const calc = () => {
@@ -292,8 +292,7 @@ export default function App() {
     () => [
       { eyebrow: 'Fecha', title: '17 de julio de 2026', text: 'Viernes 17 de julio de 2026' },
       { eyebrow: 'Hora', title: '2:30 p. m.', text: 'Hora local de Chilpancingo, Guerrero' },
-      { eyebrow: 'Lugar', title: 'Auditorio Sentimientos de la Nación', text: 'Recinto oficial de la ceremonia' },
-      { eyebrow: 'Dirección', title: 'Lic. René Juárez Cisneros, 39070', text: 'Chilpancingo de los Bravo, Gro.' },
+      { eyebrow: 'Lugar', title: 'Auditorio José Joaquín Herrera', text: 'Recinto oficial de la ceremonia' },
     ],
     []
   )
@@ -329,7 +328,7 @@ export default function App() {
           <div className="separator"></div>
           <h2>Generación M.C. Victor Hugo Muñoz García</h2>
           <p className="hero-meta">
-            Facultad de Ingeniería · 17 de julio de 2026 · 2:30 p. m. · Auditorio Sentimientos de la Nación
+            Facultad de Ingeniería · 17 de julio de 2026 · 2:30 p. m. · Auditorio José Joaquín Herrera
           </p>
 
           <div className="hero-actions">
@@ -445,8 +444,7 @@ export default function App() {
         <section className="wrapper section panels-section tone tone-sky">
           <div className="panel reveal">
             <p className="eyebrow">Ubicación del evento</p>
-            <h2>Auditorio Sentimientos de la Nación</h2>
-            <p>Lic. René Juárez Cisneros, 39070 Chilpancingo de los Bravo, Gro.</p>
+            <h2>Auditorio José Joaquín Herrera</h2>
             <a href={MAPS_LINK} target="_blank" rel="noreferrer" className="btn btn-dark">Abrir ubicación</a>
           </div>
 
