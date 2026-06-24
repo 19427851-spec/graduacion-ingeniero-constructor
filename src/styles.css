@@ -612,6 +612,378 @@ h1 {
   margin-top: 8px;
 }
 
+/* Diseño creativo para Presídium y Programa */
+.ceremony-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ceremony-launch-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  min-height: 260px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.88);
+  border-radius: 38px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  color: #1f2937;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.92), rgba(240,249,250,0.74)),
+    radial-gradient(circle at 20% 12%, rgba(216,183,128,0.35), transparent 34%);
+  box-shadow: 0 30px 90px rgba(36, 48, 65, 0.10);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  display: grid;
+  align-content: space-between;
+  gap: 18px;
+  transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, border-color .35s ease;
+}
+
+.ceremony-launch-card::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border-radius: 28px;
+  border: 1px solid rgba(216,183,128,0.26);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ceremony-launch-card::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  right: -70px;
+  bottom: -90px;
+  border-radius: 999px;
+  background: rgba(216,183,128,0.20);
+  filter: blur(4px);
+  z-index: -2;
+  transition: transform .45s ease, opacity .45s ease;
+}
+
+.ceremony-launch-card:hover {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 42px 120px rgba(36, 48, 65, 0.16);
+  border-color: rgba(216,183,128,0.46);
+}
+
+.ceremony-launch-card:hover::after {
+  transform: scale(1.18) translate(-10px, -8px);
+  opacity: .85;
+}
+
+.ceremony-launch-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255,255,255,0.92), transparent 20%),
+    linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.46) 45%, transparent 64%);
+  transform: translateX(-110%);
+  transition: transform .75s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ceremony-launch-card:hover .ceremony-launch-glow {
+  transform: translateX(110%);
+}
+
+.ceremony-launch-eyebrow {
+  width: fit-content;
+  padding: 8px 13px;
+  border-radius: 999px;
+  color: #64748b;
+  background: rgba(255,255,255,0.66);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+}
+
+.ceremony-launch-title {
+  display: block;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.1rem, 7vw, 5.4rem);
+  line-height: .9;
+  letter-spacing: -.045em;
+  color: #182233;
+}
+
+.ceremony-launch-subtitle {
+  display: block;
+  max-width: 470px;
+  color: #66758a;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.ceremony-launch-footer {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(31,41,55,0.94);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 18px 34px rgba(31,41,55,0.18);
+}
+
+.ceremony-launch-footer span {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.16);
+}
+
+.ceremony-launch-card.program-accent {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,248,236,0.76)),
+    radial-gradient(circle at 24% 18%, rgba(186, 230, 253, 0.38), transparent 34%);
+}
+
+.ceremony-launch-card.program-accent::after {
+  background: rgba(186,230,253,0.26);
+}
+
+.ceremony-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(15, 23, 42, 0.34);
+  backdrop-filter: blur(18px) saturate(1.08);
+  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  animation: modalFadeIn .28s ease both;
+}
+
+.ceremony-modal-card {
+  position: relative;
+  width: min(96vw, 980px);
+  max-height: min(86vh, 860px);
+  overflow: auto;
+  border-radius: 38px;
+  padding: 34px;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(226,243,248,0.86), transparent 34%),
+    radial-gradient(circle at 90% 15%, rgba(250,236,207,0.76), transparent 30%),
+    rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.92);
+  box-shadow: 0 38px 130px rgba(15, 23, 42, 0.30);
+  animation: modalRise .34s cubic-bezier(.22,1,.36,1) both;
+}
+
+.ceremony-modal-card::-webkit-scrollbar {
+  width: 10px;
+}
+
+.ceremony-modal-card::-webkit-scrollbar-thumb {
+  background: rgba(148,163,184,0.45);
+  border-radius: 999px;
+  border: 3px solid rgba(255,255,255,0.9);
+}
+
+.ceremony-modal-header {
+  text-align: center;
+  margin: 0 auto 24px;
+}
+
+.ceremony-modal-badge {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.78);
+  color: #64748b;
+  font-size: .72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  box-shadow: 0 10px 30px rgba(148,163,184,0.13);
+}
+
+.ceremony-modal-header h3 {
+  margin: 14px 0 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3rem, 7vw, 5.8rem);
+  line-height: .9;
+  letter-spacing: -.04em;
+  color: #182233;
+}
+
+.ceremony-modal-header p {
+  max-width: 620px;
+  margin: 14px auto 0;
+  color: #66758a;
+  line-height: 1.7;
+}
+
+.presidium-elegant-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.presidium-elegant-item,
+.program-elegant-item {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 26px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.88);
+  box-shadow: 0 16px 42px rgba(36,48,65,0.07);
+}
+
+.presidium-elegant-item::before,
+.program-elegant-item::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #d8b780, rgba(216,183,128,0.16));
+}
+
+.presidium-mark,
+.program-mark {
+  min-width: 42px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #1f2937;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 900;
+  box-shadow: 0 14px 28px rgba(31,41,55,0.16);
+}
+
+.presidium-elegant-item h4,
+.program-elegant-item h4 {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #1f2937;
+  font-size: clamp(1.45rem, 3vw, 2.05rem);
+  line-height: 1.05;
+}
+
+.presidium-elegant-item p,
+.program-elegant-item p {
+  margin: 8px 0 0;
+  color: #66758a;
+  line-height: 1.65;
+  font-size: .98rem;
+}
+
+.program-elegant-flow {
+  display: grid;
+  gap: 12px;
+}
+
+.program-elegant-item {
+  grid-template-columns: auto 1fr;
+}
+
+.program-elegant-item.featured {
+  background:
+    linear-gradient(135deg, rgba(31,41,55,0.96), rgba(55,65,81,0.92));
+  color: #fff;
+}
+
+.program-elegant-item.featured::before {
+  background: linear-gradient(180deg, #f4d69b, rgba(244,214,155,0.24));
+}
+
+.program-elegant-item.featured h4,
+.program-elegant-item.featured p {
+  color: #fff;
+}
+
+.program-elegant-item.featured .program-mark {
+  min-width: 96px;
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+  letter-spacing: .02em;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 14px 28px rgba(0,0,0,0.14);
+}
+
+.program-detail-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.program-detail-list span {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 16px;
+  color: #475569;
+  background: rgba(241,245,249,0.72);
+  line-height: 1.55;
+}
+
+@media (max-width: 840px) {
+  .ceremony-showcase-grid,
+  .presidium-elegant-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ceremony-launch-card {
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ceremony-modal-overlay {
+    padding: 12px;
+  }
+
+  .ceremony-modal-card {
+    border-radius: 30px;
+    padding: 28px 18px;
+  }
+
+  .ceremony-launch-card {
+    padding: 24px 20px;
+    border-radius: 30px;
+  }
+
+  .ceremony-launch-title {
+    font-size: clamp(2.8rem, 15vw, 4.5rem);
+  }
+
+  .presidium-elegant-item,
+  .program-elegant-item {
+    grid-template-columns: 1fr;
+  }
+
+  .presidium-mark,
+  .program-mark,
+  .program-elegant-item.featured .program-mark {
+    width: fit-content;
+    min-width: 42px;
+  }
+}
+
 .group-photo-card {
   border-radius: 32px;
   overflow: hidden;
