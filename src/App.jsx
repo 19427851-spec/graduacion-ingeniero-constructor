@@ -138,6 +138,21 @@ const ceremonyProgram = [
   },
 ]
 
+const generationPhotos = [
+  {
+    src: '/fotos/generacion.jpg',
+    alt: 'Fotografía grupal de la generación en una visita de obra',
+  },
+  {
+    src: '/fotos/generacion-oficial.jpg',
+    alt: 'Fotografía oficial de la generación',
+  },
+  {
+    src: '/fotos/generacion-toga.jpg',
+    alt: 'Fotografía de la generación con toga y birrete',
+  },
+]
+
 function useCountdown(targetDate) {
   const calc = () => {
     const diff = Math.max(targetDate.getTime() - Date.now(), 0)
@@ -205,7 +220,7 @@ function PersonCard({ role, name, description }) {
   )
 }
 
-function CeremonyLaunchCard({ eyebrow, title, subtitle, accent, onClick }) {
+function CeremonyLaunchCard({ title, accent, onClick }) {
   return (
     <button
       type="button"
@@ -213,9 +228,7 @@ function CeremonyLaunchCard({ eyebrow, title, subtitle, accent, onClick }) {
       onClick={onClick}
     >
       <span className="ceremony-launch-glow" aria-hidden="true"></span>
-      <span className="ceremony-launch-eyebrow">{eyebrow}</span>
       <span className="ceremony-launch-title">{title}</span>
-      <span className="ceremony-launch-subtitle">{subtitle}</span>
       <span className="ceremony-launch-footer">
         Tocar para abrir
         <span aria-hidden="true">↗</span>
@@ -229,10 +242,6 @@ function CeremonyInfoModal({ section, onClose }) {
 
   const isPresidium = section === 'presidium'
   const title = isPresidium ? 'Presídium' : 'Programa'
-  const subtitle = isPresidium
-    ? 'Autoridades e invitados especiales de la ceremonia'
-    : 'Orden oficial de la ceremonia de graduación'
-
   return (
     <div className="ceremony-modal-overlay" role="dialog" aria-modal="true" aria-label={title} onClick={onClose}>
       <div className="ceremony-modal-card" onClick={(event) => event.stopPropagation()}>
@@ -243,7 +252,6 @@ function CeremonyInfoModal({ section, onClose }) {
         <div className="ceremony-modal-header">
           <span className="ceremony-modal-badge">Ceremonia</span>
           <h3>{title}</h3>
-          <p>{subtitle}</p>
         </div>
 
         {isPresidium ? (
@@ -419,12 +427,41 @@ function GraduateModal({ graduate, onClose }) {
   )
 }
 
+function PhotoGalleryModal({ photoIndex, onClose, onNavigate }) {
+  if (photoIndex === null) return null
+
+  const photo = generationPhotos[photoIndex]
+
+  return (
+    <div className="photo-modal-overlay" role="dialog" aria-modal="true" aria-label="Galería de fotografías" onClick={onClose}>
+      <div className="photo-modal-card" onClick={(event) => event.stopPropagation()}>
+        <button type="button" className="graduate-modal-close" onClick={onClose} aria-label="Cerrar galería">
+          ×
+        </button>
+        <button type="button" className="photo-modal-arrow photo-modal-prev" onClick={() => onNavigate('prev')} aria-label="Foto anterior">
+          ‹
+        </button>
+        <img src={photo.src} alt={photo.alt} className="photo-modal-image" />
+        <button type="button" className="photo-modal-arrow photo-modal-next" onClick={() => onNavigate('next')} aria-label="Foto siguiente">
+          ›
+        </button>
+        <div className="photo-modal-dots" aria-hidden="true">
+          {generationPhotos.map((item, index) => (
+            <span key={item.src} className={index === photoIndex ? 'active' : ''}></span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   useReveal()
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const [isGateOpening, setIsGateOpening] = useState(false)
   const [selectedGraduate, setSelectedGraduate] = useState(null)
   const [selectedCeremonyInfo, setSelectedCeremonyInfo] = useState(null)
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null)
   const countdown = useCountdown(EVENT_DATE)
 
   useEffect(() => {
@@ -443,17 +480,29 @@ export default function App() {
     }, 2300)
   }
 
+  const navigatePhoto = (direction) => {
+    setSelectedPhotoIndex((current) => {
+      if (current === null) return current
+      if (direction === 'next') return (current + 1) % generationPhotos.length
+      return (current - 1 + generationPhotos.length) % generationPhotos.length
+    })
+  }
+
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
         setSelectedGraduate(null)
         setSelectedCeremonyInfo(null)
+        setSelectedPhotoIndex(null)
       }
+
+      if (event.key === 'ArrowRight' && selectedPhotoIndex !== null) navigatePhoto('next')
+      if (event.key === 'ArrowLeft' && selectedPhotoIndex !== null) navigatePhoto('prev')
     }
 
     window.addEventListener('keydown', handleEscape)
     return () => window.removeEventListener('keydown', handleEscape)
-  }, [])
+  }, [selectedPhotoIndex])
 
   const details = useMemo(
     () => [
@@ -560,17 +609,18 @@ export default function App() {
             <p className="eyebrow center">Nuestra generación</p>
             <h2 className="section-title">Un recuerdo que permanece</h2>
           </div>
-          <div className="group-photo-card reveal">
-            <img
-              src="/fotos/generacion.jpg"
-              alt="Fotografía grupal de la generación en una visita de obra"
-              className="group-photo"
-            />
-            <div className="group-photo-caption">
-              <p>
-                Una generación unida por el esfuerzo compartido, la experiencia en campo y la pasión por la ingeniería.
-              </p>
-            </div>
+          <div className="memories-gallery reveal">
+            {generationPhotos.map((photo, index) => (
+              <button
+                type="button"
+                className={index === 0 ? 'memory-photo-card featured' : 'memory-photo-card'}
+                key={photo.src}
+                onClick={() => setSelectedPhotoIndex(index)}
+                aria-label={`Abrir fotografía ${index + 1}`}
+              >
+                <img src={photo.src} alt={photo.alt} />
+              </button>
+            ))}
           </div>
         </section>
 
@@ -586,22 +636,17 @@ export default function App() {
 
         <section className="wrapper section tone tone-mint">
           <div className="section-heading reveal">
-            <p className="eyebrow center">Ceremonia</p>
-            <h2 className="section-title">Momentos principales</h2>
+            <h2 className="section-title ceremony-main-title">Ceremonia</h2>
           </div>
 
           <div className="ceremony-showcase-grid reveal">
             <CeremonyLaunchCard
-              eyebrow="Mesa de honor"
               title="Presídium"
-              subtitle="Autoridades e invitados especiales en una lista elegante."
               accent="presidium-accent"
               onClick={() => setSelectedCeremonyInfo('presidium')}
             />
             <CeremonyLaunchCard
-              eyebrow="Orden del evento"
               title="Programa"
-              subtitle="Actividades principales de la ceremonia de graduación."
               accent="program-accent"
               onClick={() => setSelectedCeremonyInfo('program')}
             />
@@ -642,6 +687,11 @@ export default function App() {
 
       <GraduateModal graduate={selectedGraduate} onClose={() => setSelectedGraduate(null)} />
       <CeremonyInfoModal section={selectedCeremonyInfo} onClose={() => setSelectedCeremonyInfo(null)} />
+      <PhotoGalleryModal
+        photoIndex={selectedPhotoIndex}
+        onClose={() => setSelectedPhotoIndex(null)}
+        onNavigate={navigatePhoto}
+      />
 
       <MusicButton />
 
