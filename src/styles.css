@@ -1680,3 +1680,251 @@ body.gate-locked {
   }
 }
 
+
+/* Ajustes solicitados: galería interactiva y sección de ceremonia limpia */
+.memories-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.memory-photo-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: 32px;
+  padding: 0;
+  min-height: 260px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 26px 80px rgba(36,48,65,0.11);
+  cursor: pointer;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform .38s cubic-bezier(.22,1,.36,1), box-shadow .38s ease, border-color .38s ease;
+}
+
+.memory-photo-card.featured {
+  grid-column: 1 / -1;
+  min-height: 520px;
+}
+
+.memory-photo-card::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  z-index: 2;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.52);
+  pointer-events: none;
+}
+
+.memory-photo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(15,23,42,0.10));
+  opacity: .8;
+  pointer-events: none;
+}
+
+.memory-photo-card img {
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1s cubic-bezier(.22,1,.36,1), filter .38s ease;
+}
+
+.memory-photo-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(216,183,128,0.54);
+  box-shadow: 0 42px 120px rgba(36,48,65,0.18);
+}
+
+.memory-photo-card:hover img {
+  transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.photo-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  background: rgba(15, 23, 42, 0.36);
+  backdrop-filter: blur(20px) saturate(1.08);
+  -webkit-backdrop-filter: blur(20px) saturate(1.08);
+  animation: modalFadeIn .28s ease both;
+}
+
+.photo-modal-card {
+  position: relative;
+  width: min(96vw, 1160px);
+  border-radius: 34px;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 16% 0%, rgba(226,243,248,0.72), transparent 36%),
+    radial-gradient(circle at 92% 12%, rgba(250,236,207,0.62), transparent 32%),
+    rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.92);
+  box-shadow: 0 38px 130px rgba(15, 23, 42, 0.34);
+  animation: modalRise .34s cubic-bezier(.22,1,.36,1) both;
+}
+
+.photo-modal-image {
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 24px;
+  background: rgba(15,23,42,0.05);
+  box-shadow: 0 18px 52px rgba(36,48,65,0.16);
+}
+
+.photo-modal-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.88);
+  color: #1f2937;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+  box-shadow: 0 18px 42px rgba(15,23,42,0.18);
+  transition: transform .22s ease, background .22s ease;
+}
+
+.photo-modal-arrow:hover {
+  transform: translateY(-50%) scale(1.06);
+  background: rgba(255,255,255,0.98);
+}
+
+.photo-modal-prev { left: 28px; }
+.photo-modal-next { right: 28px; }
+
+.photo-modal-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 4;
+  display: flex;
+  gap: 9px;
+  transform: translateX(-50%);
+  padding: 10px 13px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 14px 34px rgba(15,23,42,0.14);
+}
+
+.photo-modal-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(100,116,139,0.42);
+}
+
+.photo-modal-dots span.active {
+  width: 28px;
+  background: #d8b780;
+}
+
+.ceremony-main-title {
+  font-size: clamp(4.2rem, 9vw, 7.4rem);
+  line-height: .88;
+  margin-bottom: 12px;
+}
+
+.ceremony-showcase-grid {
+  align-items: stretch;
+}
+
+.ceremony-launch-card {
+  min-height: 220px;
+  align-content: center;
+  text-align: center;
+  justify-items: center;
+}
+
+.ceremony-launch-title {
+  font-size: clamp(3.6rem, 8vw, 6.2rem);
+}
+
+.ceremony-launch-footer {
+  margin-top: 8px;
+}
+
+.ceremony-modal-header {
+  margin-bottom: 30px;
+}
+
+.ceremony-modal-header h3 {
+  margin-top: 12px;
+}
+
+@media (max-width: 840px) {
+  .memories-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-photo-card.featured {
+    grid-column: auto;
+    min-height: 360px;
+  }
+
+  .memory-photo-card {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .memory-photo-card,
+  .memory-photo-card.featured {
+    min-height: 230px;
+    border-radius: 26px;
+  }
+
+  .photo-modal-overlay {
+    padding: 12px;
+  }
+
+  .photo-modal-card {
+    padding: 10px;
+    border-radius: 28px;
+  }
+
+  .photo-modal-image {
+    max-height: 72vh;
+    border-radius: 20px;
+  }
+
+  .photo-modal-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 2rem;
+  }
+
+  .photo-modal-prev { left: 18px; }
+  .photo-modal-next { right: 18px; }
+
+  .photo-modal-dots {
+    bottom: 18px;
+  }
+
+  .ceremony-main-title {
+    font-size: clamp(3.6rem, 18vw, 5.2rem);
+  }
+
+  .ceremony-launch-card {
+    min-height: 190px;
+  }
+}
