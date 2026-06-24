@@ -723,7 +723,6 @@ export default function App() {
 
       <div className="mobile-actions">
         <a href={MAPS_LINK} target="_blank" rel="noreferrer">Ubicación</a>
-        <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer">Confirmar</a>
       </div>
     </div>
   )
