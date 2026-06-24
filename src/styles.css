@@ -2097,3 +2097,67 @@ body.gate-locked {
     min-height: 220px;
   }
 }
+
+
+/* Ajuste final: portada inicial en azul rey y sin botón Confirmar */
+.invitation-gate {
+  background:
+    radial-gradient(circle at 18% 62%, rgba(64, 128, 255, 0.74), transparent 34%),
+    radial-gradient(circle at 54% 14%, rgba(20, 82, 190, 0.82), transparent 44%),
+    linear-gradient(135deg, #1d4ed8 0%, #173f9f 48%, #061a55 100%) !important;
+}
+
+.gate-panel {
+  background:
+    radial-gradient(circle at 22% 58%, rgba(87, 143, 255, 0.52), transparent 38%),
+    radial-gradient(circle at 76% 12%, rgba(25, 90, 210, 0.62), transparent 40%),
+    linear-gradient(135deg, #2563eb 0%, #1646ae 54%, #071d61 100%) !important;
+}
+
+.gate-panel-left {
+  border-right-color: rgba(219, 234, 254, 0.26) !important;
+  box-shadow: inset -18px 0 42px rgba(3, 21, 75, 0.16) !important;
+}
+
+.gate-panel-right {
+  border-left-color: rgba(219, 234, 254, 0.26) !important;
+  box-shadow: inset 18px 0 42px rgba(3, 21, 75, 0.16) !important;
+}
+
+.invitation-gate::before {
+  background: rgba(219, 234, 254, 0.30) !important;
+  box-shadow: 0 0 22px rgba(147, 197, 253, 0.22) !important;
+}
+
+.invitation-gate::after {
+  background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(147,197,253,0.44), rgba(255,255,255,0.18)) !important;
+}
+
+.gate-line {
+  background: rgba(219, 234, 254, 0.28) !important;
+}
+
+.gate-button {
+  background: rgba(239, 246, 255, 0.88) !important;
+  color: #0f2b6b !important;
+  box-shadow:
+    0 22px 48px rgba(4, 23, 82, 0.26),
+    inset 0 0 28px rgba(255,255,255,0.58) !important;
+}
+
+.gate-button:hover {
+  background: rgba(248, 251, 255, 0.96) !important;
+  box-shadow:
+    0 28px 62px rgba(4, 23, 82, 0.32),
+    inset 0 0 34px rgba(255,255,255,0.74) !important;
+}
+
+.gate-button::before,
+.gate-button::after {
+  border-color: rgba(191, 219, 254, 0.34) !important;
+}
+
+.mobile-actions {
+  max-width: 420px;
+  margin: 0 auto;
+}
