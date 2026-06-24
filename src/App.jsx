@@ -31,23 +31,121 @@ const graduates = [
 const philosophicalQuotes = [
   { text: 'Quien tiene un porqué para vivir, puede soportar casi cualquier cómo.', author: 'Friedrich Nietzsche' },
   { text: 'La verdadera sabiduría está en reconocer la propia ignorancia.', author: 'Sócrates' },
-  { text: 'La grandeza no se mide en victorias, sino en todas las veces que tuviste razones para rendirte... y aun asi no lo hiciste.', author: 'Inspirada en Nelson Mandela' },
-  { text: 'Es prudente rendirse, no querer hacer nada, dejarse morir, y luego en su debido momento, permitirse renacer.', author: 'Arcano XIII' },
+  { text: 'No es la muerte lo que el hombre debe temer, sino no empezar nunca a vivir.', author: 'Marco Aurelio' },
+  { text: 'El hombre está condenado a ser libre.', author: 'Jean-Paul Sartre' },
   { text: 'La vida solo puede ser comprendida mirando hacia atrás, pero ha de ser vivida mirando hacia adelante.', author: 'Søren Kierkegaard' },
-  { text: 'Es mejor ser infeliz... y conocer la verdad, a ser feliz en el paraíso de un ciego.', author: 'Fiodor Dostoyevski' },
+  { text: 'Aquel que domina a otros es fuerte; aquel que se domina a sí mismo es poderoso.', author: 'Lao Tse' },
   { text: 'Somos lo que hacemos repetidamente. La excelencia, entonces, no es un acto, sino un hábito.', author: 'Aristóteles' },
-  { text: 'El mundo pertenece a quienes creen tanto en sí mismos que parecen locos antes de parecer genios.', author: 'Inspirada en el pensamiento de Steve Jobs' },
-  { text: 'El impedimento para la acción avanza la acción. Lo que se interpone en el camino se convierte en el camino.', author: 'Marco Aurelio' },
+  { text: 'La felicidad de tu vida depende de la calidad de tus pensamientos.', author: 'Marco Aurelio' },
+  { text: 'Todo hombre muere, pero no todo hombre vive realmente.', author: 'William Wallace' },
   { text: 'El sufrimiento deja de ser sufrimiento en el momento en que encuentra un sentido.', author: 'Viktor Frankl' },
   { text: 'La libertad no consiste en hacer lo que se quiere, sino en tener el derecho de hacer lo que se debe.', author: 'Montesquieu' },
-  { text: 'Debes estar preparado para arder en tu propio fuego.¿como podrias renacer sin antes haberte convertido en cenizas?.', author: 'Friedrich Nietzsche.' },
-  { text: 'No hay viento favorable para el barco que no sabe a dónde va.', author: 'Séneca.' },
-  { text: 'Todos sabemos que la luz viaja más rápido que el sonido. Por eso algunas personas parecen brillantes… hasta que las escuchas hablar.', author: 'Atribuida a Albert Einstein' },
+  { text: 'El que tiene paz en su conciencia lo tiene todo.', author: 'Don Bosco' },
+  { text: 'Nadie se baña dos veces en el mismo río, porque ni el río ni la persona son los mismos.', author: 'Heráclito' },
+  { text: 'La peor lucha es la que no se hace.', author: 'Karl Marx' },
   { text: 'Conocerse a sí mismo es el principio de toda sabiduría.', author: 'Aristóteles' },
   { text: 'El alma se tiñe del color de sus pensamientos.', author: 'Marco Aurelio' },
-  { text: 'El mayor enemigo del conocimiento no es la ignorancia, sino la ilusión del conocimiento.', author: 'Stephen Hawking' },
+  { text: 'La esperanza es el sueño del hombre despierto.', author: 'Aristóteles' },
   { text: 'Solo quien ha atravesado la oscuridad puede valorar verdaderamente la luz.', author: 'Inspirada en el pensamiento existencialista' },
-  ]
+]
+
+const presidiumGuests = [
+  {
+    role: 'Presidente del Comité Ejecutivo Estatal de Morena en Guerrero',
+    name: 'Lic. Jacinto González Varona',
+  },
+  {
+    role: 'Director de la Facultad de Ingeniería',
+    name: 'Dr. Joaquín Hernández Rodríguez',
+  },
+  {
+    role: 'Jefe de Oficina de Rectoría de la Universidad Autónoma de Guerrero',
+    name: 'Mtro. Oscar Javier Arcos Fuentes',
+  },
+  {
+    role: 'Presidente de la Sociedad Mexicana de Ingeniería Sísmica, A.C., Delegación Guerrero',
+    name: 'M.I. Christian Hernández Ruiz',
+  },
+  {
+    role: 'Presidente del Honorable Colegio de Ingenieros Civiles “Primer Congreso de Anáhuac” del Estado de Guerrero, A.C.',
+    name: 'M.C. Bonifacio Rayo Mendoza',
+  },
+  {
+    role: 'Docente del Programa Educativo de Ingeniero Topógrafo y Geomático',
+    name: 'Dr. René Vázquez Jiménez',
+  },
+  {
+    role: 'Coordinador del Programa Educativo de Ingeniero en Computación',
+    name: 'M.C. Félix Molina Ángel',
+  },
+  {
+    role: 'Coordinadora del Programa Educativo de Ingeniero Topógrafo y Geomático',
+    name: 'Dr. Rocío Nayelly Ramos Bernal',
+  },
+  {
+    role: 'Docente de la Facultad de Ingeniería',
+    name: 'M.C. Eric Rodriguez Peralta',
+  },
+  {
+    role: 'Invitado de honor que da nombre a la generación',
+    name: 'M.C. Victor Hugo Muñoz García',
+  },
+]
+
+const ceremonyProgram = [
+  {
+    time: '2:00 p. m.',
+    activity: 'Recepción de invitados',
+  },
+  {
+    time: '2:30 p. m.',
+    activity: 'Honores a la bandera a cargo de la 35 Z/M',
+  },
+  {
+    time: '2:35 p. m.',
+    activity: 'Entonación del Himno Universitario a cargo del maestro(a) de ceremonias',
+  },
+  {
+    time: '2:40 p. m.',
+    activity: 'Presentación del presídium por parte del maestro(a) de ceremonias',
+  },
+  {
+    time: '2:45 p. m.',
+    activity: 'Mensaje de bienvenida por el director de la Facultad de Ingeniería',
+    description: 'Dr. Joaquín Hernández Rodríguez',
+  },
+  {
+    time: '2:53 p. m.',
+    activity: 'Mensaje del M.C. Victor Hugo Muñoz García, a quien la generación distingue llevando su nombre',
+  },
+  {
+    time: '3:01 p. m.',
+    activity: 'Palabras de despedida',
+    description: 'A cargo de la Ingeniera en Computación Zayda Rosalia Muñiz del Valle y el Ingeniero Constructor Victor Hugo Chavelas Castro.',
+  },
+  {
+    time: '3:15 p. m.',
+    activity: 'Entrega de reconocimientos a los mejores promedios de la generación 2022-2026',
+  },
+  {
+    time: '3:20 p. m.',
+    activity: 'Último pase de lista',
+    details: [
+      'Grupo 801 del Programa Educativo Ingeniero Constructor, a cargo del M.I. Christian Hernández Ruiz.',
+      'Grupo 901 del Programa Educativo Ingeniero en Computación, a cargo del M.C. Félix Molina Ángel.',
+      'Grupo 801 del Programa Educativo Ingeniero Topógrafo y Geomático, a cargo del Dr. René Vázquez Jiménez.',
+    ],
+  },
+  {
+    time: '3:40 p. m.',
+    activity: 'Mensaje y clausura por parte del Presidente del Comité Ejecutivo Estatal de Morena en Guerrero',
+    description: 'Lic. Jacinto González Varona',
+  },
+  {
+    time: '3:50 p. m.',
+    activity: 'Foto oficial',
+  },
+]
 
 function useCountdown(targetDate) {
   const calc = () => {
@@ -112,6 +210,32 @@ function PersonCard({ role, name, description }) {
       <p className="eyebrow">{role}</p>
       <h3>{name}</h3>
       <p>{description}</p>
+    </article>
+  )
+}
+
+function CeremonyAccordion({ title, subtitle, isOpen, onToggle, children }) {
+  return (
+    <article className="ceremony-panel reveal">
+      <button
+        type="button"
+        className={isOpen ? 'ceremony-toggle active' : 'ceremony-toggle'}
+        onClick={onToggle}
+        aria-expanded={isOpen}
+      >
+        <span className="ceremony-toggle-copy">
+          <span className="ceremony-toggle-title">{title}</span>
+          <span className="ceremony-toggle-subtitle">{subtitle}</span>
+        </span>
+        <span className="ceremony-toggle-action">{isOpen ? 'Ocultar' : 'Ver lista'}</span>
+        <span className="ceremony-chevron" aria-hidden="true">⌄</span>
+      </button>
+
+      {isOpen && (
+        <div className="ceremony-content">
+          {children}
+        </div>
+      )}
     </article>
   )
 }
@@ -259,7 +383,18 @@ export default function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const [isGateOpening, setIsGateOpening] = useState(false)
   const [selectedGraduate, setSelectedGraduate] = useState(null)
+  const [openCeremonySections, setOpenCeremonySections] = useState({
+    presidium: false,
+    program: false,
+  })
   const countdown = useCountdown(EVENT_DATE)
+
+  const toggleCeremonySection = (section) => {
+    setOpenCeremonySections((current) => ({
+      ...current,
+      [section]: !current[section],
+    }))
+  }
 
   useEffect(() => {
     document.body.classList.toggle('gate-locked', !isInvitationOpen)
@@ -420,24 +555,51 @@ export default function App() {
         <section className="wrapper section tone tone-mint">
           <div className="section-heading reveal">
             <p className="eyebrow center">Ceremonia</p>
-            <h2 className="section-title">Honorables invitados</h2>
           </div>
-          <div className="grid three-col">
-            <PersonCard
-              role="Padrino de generación"
-              name="Lic. Jacinto González Varona"
-              description="Presidente del Comité Ejecutivo Estatal de Morena en Guerrero."
-            />
-            <PersonCard
-              role="Último pase de lista"
-              name="M.I. Christian Hernández Ruiz"
-              description="Presidente de la Sociedad Mexicana de Ingeniería Sísmica, A.C., Delegación Guerrero."
-            />
-            <PersonCard
-              role="Invitado de Honor"
-              name="M.C. Bonifacio Rayo Mendoza"
-              description="Presidente del Honorable Colegio de Ingenieros Civiles “Primer Congreso de Anáhuac” del Estado de Guerrero, A.C."
-            />
+
+          <div className="ceremony-stack">
+            <CeremonyAccordion
+              title="Presídium"
+              subtitle="Lista completa de autoridades e invitados especiales"
+              isOpen={openCeremonySections.presidium}
+              onToggle={() => toggleCeremonySection('presidium')}
+            >
+              <ol className="presidium-list">
+                {presidiumGuests.map((guest, index) => (
+                  <li className="presidium-item" key={guest.name}>
+                    <span className="ceremony-number">{String(index + 1).padStart(2, '0')}</span>
+                    <div>
+                      <h3>{guest.name}</h3>
+                      <p>{guest.role}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </CeremonyAccordion>
+
+            <CeremonyAccordion
+              title="Programa"
+              subtitle="Orden oficial de la ceremonia de graduación"
+              isOpen={openCeremonySections.program}
+              onToggle={() => toggleCeremonySection('program')}
+            >
+              <ol className="program-list">
+                {ceremonyProgram.map((item) => (
+                  <li className="program-item" key={`${item.time}-${item.activity}`}>
+                    <time>{item.time}</time>
+                    <div>
+                      <h3>{item.activity}</h3>
+                      {item.description && <p>{item.description}</p>}
+                      {item.details && (
+                        <ul>
+                          {item.details.map((detail) => <li key={detail}>{detail}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </CeremonyAccordion>
           </div>
         </section>
 
