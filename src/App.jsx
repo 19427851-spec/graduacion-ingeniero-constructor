@@ -4,6 +4,7 @@ const EVENT_DATE = new Date('2026-07-17T14:30:00-06:00')
 const MAPS_LINK = 'https://maps.app.goo.gl/P5cGigVectswn2Jr8'
 const WHATSAPP_LINK = 'https://wa.me/527472736556'
 const MUSIC_SRC = '/audio/levitate.mp3'
+const AUTO_CAROUSEL_MS = 4800
 const MALE_ICON = '/icons/hombre.png'
 const FEMALE_ICON = '/icons/mujer.png'
 
@@ -462,12 +463,21 @@ export default function App() {
   const [selectedGraduate, setSelectedGraduate] = useState(null)
   const [selectedCeremonyInfo, setSelectedCeremonyInfo] = useState(null)
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null)
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const countdown = useCountdown(EVENT_DATE)
 
   useEffect(() => {
     document.body.classList.toggle('gate-locked', !isInvitationOpen)
     return () => document.body.classList.remove('gate-locked')
   }, [isInvitationOpen])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhotoIndex((current) => (current + 1) % generationPhotos.length)
+    }, AUTO_CAROUSEL_MS)
+
+    return () => clearInterval(interval)
+  }, [])
 
   const handleOpenInvitation = () => {
     if (isGateOpening) return
@@ -589,7 +599,7 @@ export default function App() {
             <p className="eyebrow center">Información del evento</p>
             <h2 className="section-title">Detalles de la ceremonia</h2>
           </div>
-          <div className="grid four-col">
+          <div className="grid details-grid">
             {details.map((item) => <DetailCard key={item.eyebrow} {...item} />)}
           </div>
         </section>
@@ -609,18 +619,34 @@ export default function App() {
             <p className="eyebrow center">Nuestra generación</p>
             <h2 className="section-title">Un recuerdo que permanece</h2>
           </div>
-          <div className="memories-gallery reveal">
-            {generationPhotos.map((photo, index) => (
-              <button
-                type="button"
-                className={index === 0 ? 'memory-photo-card featured' : 'memory-photo-card'}
-                key={photo.src}
-                onClick={() => setSelectedPhotoIndex(index)}
-                aria-label={`Abrir fotografía ${index + 1}`}
-              >
-                <img src={photo.src} alt={photo.alt} />
-              </button>
-            ))}
+          <div className="memories-carousel reveal">
+            <button
+              type="button"
+              className="memory-carousel-frame"
+              onClick={() => setSelectedPhotoIndex(currentPhotoIndex)}
+              aria-label={`Abrir fotografía ${currentPhotoIndex + 1}`}
+            >
+              {generationPhotos.map((photo, index) => (
+                <img
+                  key={photo.src}
+                  src={photo.src}
+                  alt={photo.alt}
+                  className={index === currentPhotoIndex ? 'active' : ''}
+                />
+              ))}
+              <span className="memory-carousel-shine" aria-hidden="true"></span>
+            </button>
+            <div className="memory-carousel-dots" aria-label="Seleccionar fotografía">
+              {generationPhotos.map((photo, index) => (
+                <button
+                  type="button"
+                  key={photo.src}
+                  className={index === currentPhotoIndex ? 'active' : ''}
+                  onClick={() => setCurrentPhotoIndex(index)}
+                  aria-label={`Ver fotografía ${index + 1}`}
+                ></button>
+              ))}
+            </div>
           </div>
         </section>
 
