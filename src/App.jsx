@@ -721,6 +721,9 @@ export default function App() {
 
       <MusicButton />
 
+      <div className="mobile-actions">
+        <a href={MAPS_LINK} target="_blank" rel="noreferrer">Ubicación</a>
+      </div>
     </div>
   )
 }
