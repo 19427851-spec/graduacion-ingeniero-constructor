@@ -440,6 +440,178 @@ h1 {
   background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(239,248,250,0.74));
 }
 
+
+.ceremony-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.ceremony-panel {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(239,248,250,0.76));
+  border: 1px solid rgba(255,255,255,0.88);
+  box-shadow: var(--shadow);
+}
+
+.ceremony-toggle {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 122px;
+  padding: 24px 26px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.ceremony-toggle:hover,
+.ceremony-toggle.active {
+  background: rgba(255,255,255,0.54);
+}
+
+.ceremony-toggle-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.ceremony-toggle-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: .95;
+  color: #1f2937;
+  letter-spacing: -.02em;
+}
+
+.ceremony-toggle-subtitle {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: .98rem;
+}
+
+.ceremony-toggle-action {
+  min-height: 42px;
+  padding: 0 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f2937;
+  color: #fff;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 14px 30px rgba(31,41,55,0.16);
+}
+
+.ceremony-chevron {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.82);
+  color: #334155;
+  font-size: 1.4rem;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform .25s ease;
+}
+
+.ceremony-toggle.active .ceremony-chevron {
+  transform: rotate(180deg);
+}
+
+.ceremony-content {
+  padding: 0 26px 28px;
+  animation: ceremonyOpen .28s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes ceremonyOpen {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.presidium-list,
+.program-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.presidium-item,
+.program-item {
+  display: grid;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 18px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.72);
+  border: 1px solid rgba(255,255,255,0.86);
+  box-shadow: 0 14px 34px rgba(36,48,65,0.06);
+}
+
+.presidium-item {
+  grid-template-columns: auto 1fr;
+}
+
+.program-item {
+  grid-template-columns: 120px 1fr;
+}
+
+.ceremony-number,
+.program-item time {
+  min-width: 76px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31,41,55,0.94);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: .08em;
+  box-shadow: 0 12px 24px rgba(31,41,55,0.16);
+}
+
+.program-item time {
+  min-width: 96px;
+  letter-spacing: .02em;
+}
+
+.presidium-item h3,
+.program-item h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.08;
+}
+
+.presidium-item p,
+.program-item p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.program-item ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.program-item li + li {
+  margin-top: 8px;
+}
+
 .group-photo-card {
   border-radius: 32px;
   overflow: hidden;
@@ -596,6 +768,17 @@ h1 {
   .four-col,
   .graduates-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .graduate-card { min-height: 88px; align-items: center; flex-direction: row; gap: 12px; }
+  .ceremony-toggle {
+    min-height: unset;
+    padding: 22px 18px;
+    grid-template-columns: 1fr auto;
+  }
+  .ceremony-toggle-action { display: none; }
+  .ceremony-content { padding: 0 16px 20px; }
+  .presidium-item,
+  .program-item { grid-template-columns: 1fr; }
+  .ceremony-number,
+  .program-item time { width: fit-content; }
   .group-photo-card { padding: 0; overflow: hidden; }
   .image-card { padding: 12px; }
   .footer { padding-bottom: 110px; }
