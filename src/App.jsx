@@ -96,39 +96,32 @@ const ceremonyProgram = [
   {
     time: '2:00 p. m.',
     activity: 'Recepción de invitados',
+    featured: true,
   },
   {
-    time: '2:30 p. m.',
     activity: 'Honores a la bandera a cargo de la 35 Z/M',
   },
   {
-    time: '2:35 p. m.',
     activity: 'Entonación del Himno Universitario a cargo del maestro(a) de ceremonias',
   },
   {
-    time: '2:40 p. m.',
     activity: 'Presentación del presídium por parte del maestro(a) de ceremonias',
   },
   {
-    time: '2:45 p. m.',
     activity: 'Mensaje de bienvenida por el director de la Facultad de Ingeniería',
     description: 'Dr. Joaquín Hernández Rodríguez',
   },
   {
-    time: '2:53 p. m.',
     activity: 'Mensaje del M.C. Victor Hugo Muñoz García, a quien la generación distingue llevando su nombre',
   },
   {
-    time: '3:01 p. m.',
     activity: 'Palabras de despedida',
     description: 'A cargo de la Ingeniera en Computación Zayda Rosalia Muñiz del Valle y el Ingeniero Constructor Victor Hugo Chavelas Castro.',
   },
   {
-    time: '3:15 p. m.',
     activity: 'Entrega de reconocimientos a los mejores promedios de la generación 2022-2026',
   },
   {
-    time: '3:20 p. m.',
     activity: 'Último pase de lista',
     details: [
       'Grupo 801 del Programa Educativo Ingeniero Constructor, a cargo del M.I. Christian Hernández Ruiz.',
@@ -137,12 +130,10 @@ const ceremonyProgram = [
     ],
   },
   {
-    time: '3:40 p. m.',
     activity: 'Mensaje y clausura por parte del Presidente del Comité Ejecutivo Estatal de Morena en Guerrero',
     description: 'Lic. Jacinto González Varona',
   },
   {
-    time: '3:50 p. m.',
     activity: 'Foto oficial',
   },
 ]
@@ -214,29 +205,79 @@ function PersonCard({ role, name, description }) {
   )
 }
 
-function CeremonyAccordion({ title, subtitle, isOpen, onToggle, children }) {
+function CeremonyLaunchCard({ eyebrow, title, subtitle, accent, onClick }) {
   return (
-    <article className="ceremony-panel reveal">
-      <button
-        type="button"
-        className={isOpen ? 'ceremony-toggle active' : 'ceremony-toggle'}
-        onClick={onToggle}
-        aria-expanded={isOpen}
-      >
-        <span className="ceremony-toggle-copy">
-          <span className="ceremony-toggle-title">{title}</span>
-          <span className="ceremony-toggle-subtitle">{subtitle}</span>
-        </span>
-        <span className="ceremony-toggle-action">{isOpen ? 'Ocultar' : 'Ver lista'}</span>
-        <span className="ceremony-chevron" aria-hidden="true">⌄</span>
-      </button>
+    <button
+      type="button"
+      className={`ceremony-launch-card ${accent}`}
+      onClick={onClick}
+    >
+      <span className="ceremony-launch-glow" aria-hidden="true"></span>
+      <span className="ceremony-launch-eyebrow">{eyebrow}</span>
+      <span className="ceremony-launch-title">{title}</span>
+      <span className="ceremony-launch-subtitle">{subtitle}</span>
+      <span className="ceremony-launch-footer">
+        Tocar para abrir
+        <span aria-hidden="true">↗</span>
+      </span>
+    </button>
+  )
+}
 
-      {isOpen && (
-        <div className="ceremony-content">
-          {children}
+function CeremonyInfoModal({ section, onClose }) {
+  if (!section) return null
+
+  const isPresidium = section === 'presidium'
+  const title = isPresidium ? 'Presídium' : 'Programa'
+  const subtitle = isPresidium
+    ? 'Autoridades e invitados especiales de la ceremonia'
+    : 'Orden oficial de la ceremonia de graduación'
+
+  return (
+    <div className="ceremony-modal-overlay" role="dialog" aria-modal="true" aria-label={title} onClick={onClose}>
+      <div className="ceremony-modal-card" onClick={(event) => event.stopPropagation()}>
+        <button type="button" className="graduate-modal-close" onClick={onClose} aria-label="Cerrar ventana">
+          ×
+        </button>
+
+        <div className="ceremony-modal-header">
+          <span className="ceremony-modal-badge">Ceremonia</span>
+          <h3>{title}</h3>
+          <p>{subtitle}</p>
         </div>
-      )}
-    </article>
+
+        {isPresidium ? (
+          <div className="presidium-elegant-list">
+            {presidiumGuests.map((guest) => (
+              <article className="presidium-elegant-item" key={guest.name}>
+                <span className="presidium-mark" aria-hidden="true">✦</span>
+                <div>
+                  <h4>{guest.name}</h4>
+                  <p>{guest.role}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="program-elegant-flow">
+            {ceremonyProgram.map((item) => (
+              <article className={item.featured ? 'program-elegant-item featured' : 'program-elegant-item'} key={item.activity}>
+                <span className="program-mark" aria-hidden="true">{item.featured ? '2:00 p. m.' : '◆'}</span>
+                <div>
+                  <h4>{item.activity}</h4>
+                  {item.description && <p>{item.description}</p>}
+                  {item.details && (
+                    <div className="program-detail-list">
+                      {item.details.map((detail) => <span key={detail}>{detail}</span>)}
+                    </div>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 
@@ -383,18 +424,8 @@ export default function App() {
   const [isInvitationOpen, setIsInvitationOpen] = useState(false)
   const [isGateOpening, setIsGateOpening] = useState(false)
   const [selectedGraduate, setSelectedGraduate] = useState(null)
-  const [openCeremonySections, setOpenCeremonySections] = useState({
-    presidium: false,
-    program: false,
-  })
+  const [selectedCeremonyInfo, setSelectedCeremonyInfo] = useState(null)
   const countdown = useCountdown(EVENT_DATE)
-
-  const toggleCeremonySection = (section) => {
-    setOpenCeremonySections((current) => ({
-      ...current,
-      [section]: !current[section],
-    }))
-  }
 
   useEffect(() => {
     document.body.classList.toggle('gate-locked', !isInvitationOpen)
@@ -416,6 +447,7 @@ export default function App() {
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
         setSelectedGraduate(null)
+        setSelectedCeremonyInfo(null)
       }
     }
 
@@ -555,51 +587,24 @@ export default function App() {
         <section className="wrapper section tone tone-mint">
           <div className="section-heading reveal">
             <p className="eyebrow center">Ceremonia</p>
+            <h2 className="section-title">Momentos principales</h2>
           </div>
 
-          <div className="ceremony-stack">
-            <CeremonyAccordion
+          <div className="ceremony-showcase-grid reveal">
+            <CeremonyLaunchCard
+              eyebrow="Mesa de honor"
               title="Presídium"
-              subtitle="Lista completa de autoridades e invitados especiales"
-              isOpen={openCeremonySections.presidium}
-              onToggle={() => toggleCeremonySection('presidium')}
-            >
-              <ol className="presidium-list">
-                {presidiumGuests.map((guest, index) => (
-                  <li className="presidium-item" key={guest.name}>
-                    <span className="ceremony-number">{String(index + 1).padStart(2, '0')}</span>
-                    <div>
-                      <h3>{guest.name}</h3>
-                      <p>{guest.role}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </CeremonyAccordion>
-
-            <CeremonyAccordion
+              subtitle="Autoridades e invitados especiales en una lista elegante."
+              accent="presidium-accent"
+              onClick={() => setSelectedCeremonyInfo('presidium')}
+            />
+            <CeremonyLaunchCard
+              eyebrow="Orden del evento"
               title="Programa"
-              subtitle="Orden oficial de la ceremonia de graduación"
-              isOpen={openCeremonySections.program}
-              onToggle={() => toggleCeremonySection('program')}
-            >
-              <ol className="program-list">
-                {ceremonyProgram.map((item) => (
-                  <li className="program-item" key={`${item.time}-${item.activity}`}>
-                    <time>{item.time}</time>
-                    <div>
-                      <h3>{item.activity}</h3>
-                      {item.description && <p>{item.description}</p>}
-                      {item.details && (
-                        <ul>
-                          {item.details.map((detail) => <li key={detail}>{detail}</li>)}
-                        </ul>
-                      )}
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </CeremonyAccordion>
+              subtitle="Actividades principales de la ceremonia de graduación."
+              accent="program-accent"
+              onClick={() => setSelectedCeremonyInfo('program')}
+            />
           </div>
         </section>
 
@@ -636,6 +641,7 @@ export default function App() {
       </footer>
 
       <GraduateModal graduate={selectedGraduate} onClose={() => setSelectedGraduate(null)} />
+      <CeremonyInfoModal section={selectedCeremonyInfo} onClose={() => setSelectedCeremonyInfo(null)} />
 
       <MusicButton />
 
